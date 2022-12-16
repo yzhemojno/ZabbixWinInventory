@@ -51,7 +51,7 @@ $BIOSDate = $BIOS.ConvertToDateTime($BIOS.releasedate).ToShortDateString()
 $MotherBoard = Get-WmiObject Win32_BaseBoard | Select-Object Product | foreach { $_.Product }
 $Proc = Get-WmiObject Win32_Processor | Select-Object Name | foreach { $_.Name }
 $OpMemory = Get-WmiObject Win32_PhysicalMemory | Select-Object Capacity | foreach { $_.Capacity }
-$PhysDisk = Get-PhysicalDisk | Select-Object FriendlyName | foreach { $_.FriendlyName }
+$PhysDisk = Get-CimInstance Win32_OperatingSystem | Select-Object OSArchitecture | foreach { $_.FriendlyName }
 
 
 $outputWinOS = "- inv.WinOS "
