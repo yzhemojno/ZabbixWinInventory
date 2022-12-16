@@ -48,10 +48,10 @@ $OperatingSystem = Get-WmiObject -Class Win32_OperatingSystem
 $OSInstallDate = ($OperatingSystem.ConvertToDateTime($OperatingSystem.InstallDate).ToShortDateString())
 $BIOSDate = $BIOS.ConvertToDateTime($BIOS.releasedate).ToShortDateString()
 
-$MotherBoard = Get-WmiObject Win32_BaseBoard | Select-Object Product | foreach { $_.MotherBoard }
-$Proc = Get-WmiObject Win32_Processor | Select-Object Name | foreach { $_.Processor }
-$OpMemory = Get-WmiObject Win32_PhysicalMemory | Select-Object Capacity | foreach { $_.OperationMemory }
-$PhysDisk = Get-PhysicalDisk | Select FriendlyName, MediaType | foreach { $_.PhysicalDisk }
+$MotherBoard = Get-WmiObject Win32_BaseBoard | Select-Object Product | foreach { $_.Product }
+$Proc = Get-WmiObject Win32_Processor | Select-Object Name | foreach { $_.Name }
+$OpMemory = Get-WmiObject Win32_PhysicalMemory | Select-Object Capacity | foreach { $_.Capacity }
+$PhysDisk = Get-PhysicalDisk | Select FriendlyName | foreach { $_.FriendlyName }
 
 
 $outputWinOS = "- inv.WinOS "
